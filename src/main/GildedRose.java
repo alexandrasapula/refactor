@@ -17,58 +17,50 @@ public class GildedRose {
     }
 
     private boolean isSulfuras(Item item) {
-        return item.name.equals("Sulfuras, Hand of Ragnaros");
+        return item.getName().getValue().equals("Sulfuras, Hand of Ragnaros");
     }
 
     private void updateSellIn(Item item) {
-        item.sellIn--;
+        item.getSellIn().decrement();
     }
 
     private void updateQualityForItem(Item item) {
         if (isAgedBrie(item)) {
-            increaseQuality(item);
+            item.getQuality().increment();
             return;
         }
         if (isBackstagePass(item)) {
             updateBackstagePassQuality(item);
             return;
         }
-        decreaseQuality(item);
+        item.getQuality().decrement();
     }
 
     private void handleExpiredItem(Item item) {
-        if (item.sellIn >= 0) return;
+        if (item.getSellIn().getValue() >= 0) return;
         if (isAgedBrie(item)) {
-            increaseQuality(item);
+            item.getQuality().increment();
             return;
         }
         if (isBackstagePass(item)) {
-            item.quality = 0;
+            item.getQuality().setZero();
             return;
         }
-        decreaseQuality(item);
+        item.getQuality().decrement();
     }
 
     private boolean isAgedBrie(Item item) {
-        return item.name.equals("Aged Brie");
+        return item.getName().getValue().equals("Aged Brie");
     }
 
     private boolean isBackstagePass(Item item) {
-        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
-    private void increaseQuality(Item item) {
-        if (item.quality < 50) item.quality++;
-    }
-
-    private void decreaseQuality(Item item) {
-        if (item.quality > 0) item.quality--;
+        return item.getName().getValue().equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
     private void updateBackstagePassQuality(Item item) {
-        increaseQuality(item);
-        if (item.sellIn < 11) increaseQuality(item);
-        if (item.sellIn < 6) increaseQuality(item);
+        item.getQuality().increment();
+        if (item.getSellIn().getValue() < 11) item.getQuality().increment();
+        if (item.getSellIn().getValue() < 6) item.getQuality().increment();
     }
 
 }

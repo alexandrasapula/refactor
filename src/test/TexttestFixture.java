@@ -1,7 +1,6 @@
 package test;
 
-import main.GildedRose;
-import main.Item;
+import main.*;
 import java.util.Arrays;
 
 public class TexttestFixture {
@@ -9,15 +8,16 @@ public class TexttestFixture {
         System.out.println("OMGHAI!");
 
         Item[] items = new Item[] {
-                new Item("+5 Dexterity Vest", 10, 20),
-                new Item("Aged Brie", 2, 0),
-                new Item("Elixir of the Mongoose", 5, 7),
-                new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-                new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                new Item("Conjured Mana Cake", 3, 6) };
+                new RegularItem("+5 Dexterity Vest", 10, 20),
+                new AgedBrieItem("Aged Brie", 2, 0),
+                new RegularItem("Elixir of the Mongoose", 5, 7),
+                new SulfurasItem("Sulfuras, Hand of Ragnaros", 0, 80),
+                new SulfurasItem("Sulfuras, Hand of Ragnaros", -1, 80),
+                new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                new RegularItem("Conjured Mana Cake", 3, 6)
+        };
 
         GildedRose app = new GildedRose(Arrays.asList(items));
 

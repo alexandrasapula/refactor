@@ -1,7 +1,6 @@
 package test;
 
-import main.GildedRose;
-import main.Item;
+import main.*;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -12,7 +11,7 @@ public class GildedRoseTest {
 
     @Test
     public void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
+        Item[] items = new Item[] {new RegularItem("foo", 0, 0)};
         GildedRose app = new GildedRose(Arrays.asList(items));
         app.updateQuality();
         assertEquals("fixme", app.getItems().get(0).getName());

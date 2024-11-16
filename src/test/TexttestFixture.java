@@ -2,6 +2,7 @@ package test;
 
 import main.GildedRose;
 import main.Item;
+import java.util.Arrays;
 
 public class TexttestFixture {
     public static void main(String[] args) {
@@ -16,10 +17,9 @@ public class TexttestFixture {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(Arrays.asList(items));
 
         int days = 5;
         if (args.length > 0) {

@@ -27,22 +27,26 @@ public class GildedRose {
     private void updateQualityForItem(Item item) {
         if (isAgedBrie(item)) {
             increaseQuality(item);
-        } else if (isBackstagePass(item)) {
-            updateBackstagePassQuality(item);
-        } else {
-            decreaseQuality(item);
+            return;
         }
+        if (isBackstagePass(item)) {
+            updateBackstagePassQuality(item);
+            return;
+        }
+        decreaseQuality(item);
     }
 
     private void handleExpiredItem(Item item) {
         if (item.sellIn >= 0) return;
         if (isAgedBrie(item)) {
             increaseQuality(item);
-        } else if (isBackstagePass(item)) {
-            item.quality = 0;
-        } else {
-            decreaseQuality(item);
+            return;
         }
+        if (isBackstagePass(item)) {
+            item.quality = 0;
+            return;
+        }
+        decreaseQuality(item);
     }
 
     private boolean isAgedBrie(Item item) {

@@ -1,17 +1,17 @@
 package main;
 
-public class Item {
-    private final Name name;
-    private final SellIn sellIn;
-    private final Quality quality;
+public abstract class Item {
+    private String name;
+    private SellIn sellIn;
+    private Quality quality;
 
     public Item(String name, int sellIn, int quality) {
-        this.name = new Name(name);
+        this.name = name;
         this.sellIn = new SellIn(sellIn);
         this.quality = new Quality(quality);
     }
 
-    public Name getName() {
+    public String getName() {
         return name;
     }
 
@@ -23,8 +23,7 @@ public class Item {
         return quality;
     }
 
-    @Override
-    public String toString() {
-        return name + ", " + sellIn + ", " + quality;
-    }
+    public abstract void updateItem();
+
+    public abstract String toString();
 }
